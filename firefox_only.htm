@@ -34,7 +34,7 @@
     }
 
     #warning {
-      display: none;
+      display: block;
       background-color: #cc4429;
       border-radius: 0.5em;
       padding: 1.0em;
@@ -42,7 +42,7 @@
       box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
     }
     #content {
-      display: block;
+      display: none;
       background-color: #3ec969;
       border-radius: 0.5em;
       padding: 1.0em;
@@ -90,10 +90,10 @@
         return false;
       }
       
-      // Display warning if using other than Firefox
+      // Display Content if using Firefox
       if (!isFirefox()) {
-        $("#warning").show();
-        $("#content").hide();
+        $("#warning").hide();
+        $("#content").show();
       }
       
       // Preventing fraud through fingerprinting
