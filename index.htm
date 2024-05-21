@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kosasho's Website</title>
+  <style>
+        @font-face {
+            font-family: "OPPO Sans";
+            src: url("OPPOSans-Regular.ttf") format('truetype');
+        }
+
+        @keyframes BlurAnimation {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+
+    body {
+      font-family:"OPPO Sans", sans-serif;
+      margin: 0;
+      padding: 1.5em;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-color, #f5f5f5);
+      transition: background-color 0.3s ease-in-out;
+      animation: BlurAnimation 1s ease-in-out;
+    }
+
+    .hero {
+      background-color: var(--bg-color-secondary, #fff);
+      border-radius: 0.5em;
+      padding: 1.5em;
+      box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 1.5em;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+      color: var(--text-color);
+    }
+    .hero p {
+      color: var(--text-color);
+    }
+
+    .content {
+      text-align: center;
+      line-height: 1.5em;
+      color: var(--text-color);
+      margin: 0 auto;
+    }
+
+    .content img {
+      border-radius: 0.5em;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap:wrap;
+      justify-content: space-between;
+      margin-top: 1.5em;
+      margin-bottom: 2em; 
+      font-size: 0.9em;
+    }
+
+    .contact a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 0.4em 0.7em;
+      border: 1px solid var(--border-color, #000);
+      border-radius: 0.5em;
+      margin-right: 0.7em;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+
+    .contact a:hover {
+      background-color: var(--text-color, #000);
+      color: var(--bg-color-secondary, #FFF);
+    }
+
+    .footer {
+      text-align: center;
+      line-height: 1.5em;
+      color: var(--text-color);
+      margin: 0 auto;
+    }
+
+    /* Media query for dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #222;
+        --bg-color-secondary: #333;
+        --text-color: #fff;
+        --border-color: #444;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Kosasho's Website</h1>
+    <p>This is a website created with a single HTML file.</p>
+  </div>
+  <div class="content">
+    <p>Exploring Teyvat and the Astral Express in Genshin Impact and Honkai Star Rail. 🎮<br />I love to use OPPO, OnePlus, and Others. 📱</p>
+    <img src="Cats.jpg" alt="Cute Kitties Image" width="300" height="300">
+    <img src="Dogs.jpg" alt="Cute Puppies Image" width="300" height="300">
+  </div>
+  <div class="contact">
+    <a href="firefox_only.htm">Firefox?</a>
+    <a href="calendar.htm">Calendar</a>
+    <a href="countdown.htm">Countdown</a>
+    <a href="https://bsky.app/profile/kosasho.bsky.social">Bluesky</a>
+    <a href="https://discord.com/invite/jnt7EFBrWE">Discord</a>
+  </div>
+  <div class="footer">
+    <footer>
+        &copy; Kosasho : You can use the design of my website, but please add my credit, like a URL and name.
+    </footer>
+  </div>
+</body>
+</html>

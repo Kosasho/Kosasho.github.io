@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firefox-only Website</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <style>
+        @font-face {
+            font-family: "OPPO Sans";
+            src: url("OPPOSans-Regular.ttf") format('truetype');
+        }
+
+        @keyframes BlurAnimation {
+            0% {
+                transform: scale(0.95);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+
+    body {
+      font-family:"OPPO Sans", sans-serif;
+      margin: 0;
+      padding: 1.5em;
+      background-color: #f5f5f5;
+      transition: background-color 0.3s ease-in-out;
+      animation: BlurAnimation 1s ease-in-out;
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222;
+      }
+      #warning, .hero {
+        background-color: #333;
+      }
+      #warning h1, .hero h1, #content h2, p {
+        color: #fff;
+      }
+      #warning p, .hero p, a {
+        color: #ddd;
+      }
+      a:hover {
+        color: #ccc;
+      }
+    }
+
+    #warning {
+      display: block;
+      background-color: #cc4429;
+      border-radius: 0.5em;
+      padding: 1.0em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
+    }
+    #content {
+      display: none;
+      background-color: #3ec969;
+      border-radius: 0.5em;
+      padding: 1.0em;
+      margin-bottom: 1.5em;
+      box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="warning">
+    <h1>This site can only be viewed using Firefox.</h1>
+    <p>The content of this site cannot be viewed in browsers other than Firefox. Please download and use Firefox.</p>
+    <p><a href="https://www.mozilla.org/en-US/firefox/new/">Download Firefox</a></p>
+  </div>
+  <div id="content">
+    <h2>Firefox!!</h2>
+    <p>Firefox is the best!❤️</p>
+  </div>
+  <script>
+    $(document).ready(function() {
+      // Check if the browser is Firefox by testing its features and behaviors
+      function isFirefox() {
+        // Test 1: Check if Firefox-only properties exist
+        if (window.mozInnerScreenX !== undefined && window.mozInnerScreenY !== undefined) {
+          return true;
+        }
+        
+        // Test 2: Check if Firefox-only CSS is applied
+        const testElement = document.createElement('div');
+        testElement.style.cssText = '-moz-appearance:none';
+        if (window.getComputedStyle(testElement).getPropertyValue('-moz-appearance') === 'none') {
+          return true;
+        }
+        
+        // Test 3: Check if Firefox-only error message is returned
+        try {
+          window.sidebar();
+        } catch (error) {
+          if (error.message === 'TypeError: window.sidebar is not a function') {
+            return true;
+          }
+        }
+        
+        // If none of the tests passed, return false
+        return false;
+      }
+      
+      // Display Content if using Firefox
+      if (isFirefox()) {
+        $("#warning").hide();
+        $("#content").show();
+      }
+      
+      // Preventing fraud through fingerprinting
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = "rgb(200,0,0)";
+      ctx.fillRect(0, 0, 100, 100);
+      const fingerprint = canvas.toDataURL();
+      
+      // Save fingerprint in session storage
+      sessionStorage.setItem('fingerprint', fingerprint);
+      
+      // Check fingerprint on page load
+      if (sessionStorage.getItem('fingerprint') !== fingerprint) {
+        // Show warning if fingerprints do not match
+        $("#warning").show();
+        $("#content").hide();
+      }
+    });
+  </script>
+</body>
+</html>
