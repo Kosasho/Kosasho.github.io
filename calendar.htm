@@ -1,123 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar</title>
-    <style>
-        @font-face {
-            font-family: "OPPO Sans";
-            src: url("OPPOSans-Regular.ttf") format('truetype');
-        }
-
-        @keyframes BlurAnimation {
-            0% {
-                transform: scale(0.95);
-                opacity: 0;
-                filter: blur(10px);
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-                filter: blur(0);
-            }
-        }
-
-
-    body {
-            font-family:"OPPO Sans", sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bg-color, #f5f5f5);
-            color: var(--text-color);
-            transition: background-color 0.3s ease-in-out;
-            animation: BlurAnimation 1s ease-in-out;
-        }
-        /* Calendar styling */
-        .calendar {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1rem;
-            margin: 0 auto;
-        }
-        .day {
-            text-align: center;
-            min-width: 0;
-            padding: 0.5rem;
-            background-color: var(--bg-color-secondary, #fff);
-            border-radius: 0.5em;
-            color: var(--text-color);
-            transition: background-color 0.3s ease-in-out;
-            box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
-        }
-        .today {
-            background-color: #ffc107;
-            color: var(#fff);
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #222;
-                --bg-color-secondary: #333;
-                --text-color: #fff;
-                --border-color: #444;
-        }
-            }    
-    </style>
-</head>
-<body>
-	<h1>Calendar</h1>
-    <div class="calendar">
-        <div class="day">Sun</div>
-        <div class="day">Mon</div>
-        <div class="day">Tue</div>
-        <div class="day">Wed</div>
-        <div class="day">Thu</div>
-        <div class="day">Fri</div>
-        <div class="day">Sat</div>
-        <!-- Generate calendar days dynamically using JavaScript -->
-    </div>
-
-    <script>
-        // Get the current date
-        const currentDate = new Date();
-
-        // Get the first day of the current month
-        const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
-
-        // Get the total number of days in the current month
-        const totalDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
-
-        // Calculate the day of the week for the first day (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-        const firstDayOfWeek = firstDayOfMonth.getDay();
-
-        // Create an array to store the calendar days
-        const calendarDays = [];
-
-        // Generate calendar days
-        for (let i = 1; i <= totalDaysInMonth; i++) {
-            calendarDays.push(i);
-        }
-
-        // Display the calendar days
-        const calendarContainer = document.querySelector('.calendar');
-        for (let i = 0; i < firstDayOfWeek; i++) {
-            const emptyDay = document.createElement('div');
-            emptyDay.classList.add('day');
-            calendarContainer.appendChild(emptyDay);
-        }
-        calendarDays.forEach(day => {
-            const calendarDay = document.createElement('div');
-            calendarDay.classList.add('day');
-            if (day === currentDate.getDate()) {
-                calendarDay.classList.add('today');
-            }
-            calendarDay.textContent = day;
-            calendarContainer.appendChild(calendarDay);
-        });
-    </script>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Calendar</title>
+      <style>
+         @font-face {
+         font-family: "OPPO Sans";
+         src: url("OPPOSans-Regular.ttf") format('truetype');
+         }
+         @keyframes BlurAnimation {
+         0% {
+         transform: scale(0.95);
+         opacity: 0;
+         filter: blur(10px);
+         }
+         100% {
+         transform: scale(1);
+         opacity: 1;
+         filter: blur(0);
+         }
+         }
+         body {
+         font-family:"OPPO Sans", sans-serif;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         background-color: var(--bg-color, #f5f5f5);
+         color: var(--text-color);
+         transition: background-color 0.3s ease-in-out;
+         animation: BlurAnimation 1s ease-in-out;
+         }
+         /* Calendar styling */
+         .calendar {
+         display: grid;
+         grid-template-columns: repeat(7, 1fr);
+         gap: 1rem;
+         margin: 0 auto;
+         }
+         .day {
+         text-align: center;
+         min-width: 0;
+         padding: 0.5rem;
+         background-color: var(--bg-color-secondary, #fff);
+         border-radius: 0.5em;
+         color: var(--text-color);
+         transition: background-color 0.3s ease-in-out;
+         box-shadow: 0 0.3em 0.2em rgba(0, 0, 0, 0.1);
+         }
+         .today {
+         background-color: #ffc107;
+         color: var(#fff);
+         transition: background-color 0.3s ease-in-out;
+         }
+         @media (prefers-color-scheme: dark) {
+         :root {
+         --bg-color: #222;
+         --bg-color-secondary: #333;
+         --text-color: #fff;
+         --border-color: #444;
+         }
+         }    
+      </style>
+   </head>
+   <body>
+      <h1>Calendar</h1>
+      <div class="calendar">
+         <div class="day">Sun</div>
+         <div class="day">Mon</div>
+         <div class="day">Tue</div>
+         <div class="day">Wed</div>
+         <div class="day">Thu</div>
+         <div class="day">Fri</div>
+         <div class="day">Sat</div>
+         <!-- Generate calendar days dynamically using JavaScript -->
+      </div>
+      <script>
+         // Get the current date
+         const currentDate = new Date();
+         
+         // Get the first day of the current month
+         const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+         
+         // Get the total number of days in the current month
+         const totalDaysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+         
+         // Calculate the day of the week for the first day (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+         const firstDayOfWeek = firstDayOfMonth.getDay();
+         
+         // Create an array to store the calendar days
+         const calendarDays = [];
+         
+         // Generate calendar days
+         for (let i = 1; i <= totalDaysInMonth; i++) {
+             calendarDays.push(i);
+         }
+         
+         // Display the calendar days
+         const calendarContainer = document.querySelector('.calendar');
+         for (let i = 0; i < firstDayOfWeek; i++) {
+             const emptyDay = document.createElement('div');
+             emptyDay.classList.add('day');
+             calendarContainer.appendChild(emptyDay);
+         }
+         calendarDays.forEach(day => {
+             const calendarDay = document.createElement('div');
+             calendarDay.classList.add('day');
+             if (day === currentDate.getDate()) {
+                 calendarDay.classList.add('today');
+             }
+             calendarDay.textContent = day;
+             calendarContainer.appendChild(calendarDay);
+         });
+      </script>
+   </body>
 </html>
