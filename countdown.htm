@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Countdown to Next Year</title>
-      <style>
-         @font-face {
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Countdown to Next Year</title>
+   <style>
+      @font-face {
          font-family: "OPPO Sans";
          src: url("OPPOSans-Regular.ttf") format('truetype');
-         }
-         @keyframes BlurAnimation {
+      }
+
+      @keyframes BlurAnimation {
          0% {
-         transform: scale(0.95);
-         opacity: 0;
-         filter: blur(10px);
+            transform: scale(0.95);
+            opacity: 0;
+            filter: blur(10px);
          }
+
          100% {
-         transform: scale(1);
-         opacity: 1;
-         filter: blur(0);
+            transform: scale(1);
+            opacity: 1;
+            filter: blur(0);
          }
-         }
-         body {
-         font-family:"OPPO Sans", sans-serif;
+      }
+
+      body {
+         font-family: "OPPO Sans", sans-serif;
          display: flex;
          flex-direction: column;
          justify-content: center;
@@ -32,8 +36,9 @@
          background-color: var(--bg-color, #f5f5f5);
          transition: background-color 0.3s ease-in-out;
          animation: BlurAnimation 1s ease-in-out;
-         }
-         body p{
+      }
+
+      body p {
          background-color: var(--bg-color-secondary, #fff);
          border-radius: 0.5em;
          padding: 1.0em;
@@ -41,44 +46,50 @@
          text-align: center;
          margin-bottom: 1.5em;
          transition: background-color 0.3s ease-in-out;
-         }
-         #countdown {
+      }
+
+      #countdown {
          font-size: 2rem;
-         }
-         #countdown span {
+      }
+
+      #countdown span {
          display: inline-block;
          margin: 0 0.3em;
-         }
-         /* Media query for dark mode */
-         @media (prefers-color-scheme: dark) {
+      }
+
+      /* Media query for dark mode */
+      @media (prefers-color-scheme: dark) {
          :root {
-         --bg-color: #222;
-         --bg-color-secondary: #333;
-         --text-color: #fff;
-         --border-color: #444;
+            --bg-color: #222;
+            --bg-color-secondary: #333;
+            --text-color: #fff;
+            --border-color: #444;
          }
-      </style>
-   </head>
-   <body>
-      <h1>Countdown to next year:</h1>
-      <p id="countdown"></p>
-      <script>
-         function updateCountdown() {
-           const today = new Date();
-           const nextYear = new Date(today.getFullYear() + 1, 0, 1);
-           const differenceInMilliseconds = nextYear.getTime() - today.getTime();
-           const daysUntilNextYear = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
-           const hours = Math.floor((differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-           const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
-           const seconds = Math.floor((differenceInMilliseconds % (1000 * 60)) / 1000);
-         
-           const displayString = `${daysUntilNextYear} days, ${hours.toString().padStart(2, '0')} hours, ${minutes.toString().padStart(2, '0')} minutes, ${seconds.toString().padStart(2, '0')} seconds`;
-         
-           document.getElementById("countdown").innerHTML = displayString;
-         }
-         
-         updateCountdown();
-         setInterval(updateCountdown, 1000); // Update every second
-      </script>
-   </body>
+      }
+   </style>
+</head>
+
+<body>
+   <h1>Countdown to next year:</h1>
+   <p id="countdown"></p>
+   <script>
+      function updateCountdown() {
+         const today = new Date();
+         const nextYear = new Date(today.getFullYear() + 1, 0, 1);
+         const differenceInMilliseconds = nextYear.getTime() - today.getTime();
+         const daysUntilNextYear = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24));
+         const hours = Math.floor((differenceInMilliseconds % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+         const minutes = Math.floor((differenceInMilliseconds % (1000 * 60 * 60)) / (1000 * 60));
+         const seconds = Math.floor((differenceInMilliseconds % (1000 * 60)) / 1000);
+
+         const displayString = `${daysUntilNextYear} days, ${hours.toString().padStart(2, '0')} hours, ${minutes.toString().padStart(2, '0')} minutes, ${seconds.toString().padStart(2, '0')} seconds`;
+
+         document.getElementById("countdown").innerHTML = displayString;
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000); // Update every second
+   </script>
+</body>
+
 </html>
